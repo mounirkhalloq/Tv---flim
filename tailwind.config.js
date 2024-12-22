@@ -16,7 +16,10 @@ module.exports = {
         headerShrinkHeight: '5rem',
       },
       screens: {
-        'hover-hover': { raw: '(hover: hover)' },
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
       },
     },
   },
