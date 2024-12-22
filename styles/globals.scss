@@ -93,13 +93,9 @@ iframe {
 
   // Button
   .btn {
-    @apply relative py-2 px-7 rounded-3xl border-4 border-solid border-transparent font-semibold text-[1.5rem] bg-main text-white cursor-pointer;
-    box-shadow: 0px 0px 7px 8px #ff00004d;
-    transition: box-shadow 0.3s ease;
-  
-    &:hover {
-      box-shadow: 0px 0px 7px 15px #ff00004d;
-    }
+    @apply relative py-2 px-5 rounded-full border-4 font-medium text-base bg-main text-white cursor-pointer;
+    box-shadow: 0px 0px 5px 6px rgba(255, 0, 0, 0.3);
+    transition: box-shadow 0.2s ease;
   }
   
   .btn-outline {
