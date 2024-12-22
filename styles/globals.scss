@@ -61,11 +61,16 @@ iframe {
     @apply text-main;
   }
 }
+@media (hover: none) {
+  a {
+    @apply text-main; /* For touch devices */
+  }
+}
 
 //Swiper
 .swiper.swiper-initialized{
   .swiper-wrapper{
-    // @apply mb-[-10px] ;
+    @apply mb-0; /* ou une valeur adaptée */ ;
   }
   .swiper-scrollbar-drag{
     @apply bg-white;
