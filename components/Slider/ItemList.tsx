@@ -9,13 +9,11 @@ interface Props {
   vertical?: boolean;
 }
 
-// SwiperCore.use([Keyboard]);
-
 const ItemList = ({ items, vertical = false }: Props) => {
   const styleSlide = {
-    width: vertical ? '100%' : '15%',
-    // height: '15%',
+    width: vertical ? '100%' : 'auto', // Ajustement adaptatif
   };
+
   return (
     <Swiper
       direction={vertical ? 'vertical' : 'horizontal'}
@@ -27,8 +25,13 @@ const ItemList = ({ items, vertical = false }: Props) => {
         enabled: true,
       }}
       grabCursor={true}
-      spaceBetween={10}
-      slidesPerView={'auto'}
+      spaceBetween={5} // Réduction de l'espacement pour mobile
+      slidesPerView={1} // Par défaut, 1 slide visible
+      breakpoints={{
+        640: { slidesPerView: 2, spaceBetween: 10 }, // Tablettes : 2 slides visibles
+        768: { slidesPerView: 3, spaceBetween: 15 }, // Ordinateurs portables : 3 slides visibles
+        1024: { slidesPerView: 4, spaceBetween: 20 }, // Grands écrans : 4 slides visibles
+      }}
       mousewheel={{
         forceToAxis: true,
       }}
