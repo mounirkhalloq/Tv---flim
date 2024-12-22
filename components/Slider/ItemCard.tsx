@@ -9,42 +9,18 @@ interface Props {
   item: MovieItemProps;
 }
 
-const ItemCard = ({ item }: Props) => {
-  const bg = w500Image(item.poster_path || item.backdrop_path);
+const ItemCard = ({ item }) => {
   return (
-    <Link href={`/${item.media_type}/${item.id}`}>
-      <a>
-        <div className="mb-8">
-          <div
-            className="group relative rounded-3xl bg-center bg-cover bg-no-repeat pt-[160%] mb-2
-            before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-0 before:rounded-3xl
-            before:transition-[opacity] before:duration-300 before:ease-[ease]
-            hover-hover:hover:before:opacity-80
-            "
-            style={{ backgroundImage: `url(${bg})` }}
-          >
-            <Rating
-              rating={item.vote_average}
-              className="absolute top-1 left-2/4 translate-x-[-50%] group-hover:opacity-80
-              transition-[opacity] duration-300 ease-[ease]
-              "
-            />
-            <Button
-              className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%]
-                  group-hover:opacity-100 opacity-0
-                  group-hover:scale-100 scale-0
-                  transition-[transform,opacity] duration-[300ms,300ms] ease-[ease,ease]
-                  "
-            >
-              <FaPlayCircle size={40} />
-            </Button>
-          </div>
-          <p className="flex-center-center font-bold text-[18px]">
-            {item.title || item.name}
-          </p>
-        </div>
-      </a>
-    </Link>
+    <div className="flex flex-col items-center space-y-2">
+      <img
+        src={item.posterUrl}
+        alt={item.title}
+        className="w-full h-auto rounded-lg"
+      />
+      <p className="text-xs sm:text-sm font-semibold truncate sm:line-clamp-2 text-center">
+        {item.title}
+      </p>
+    </div>
   );
 };
 
