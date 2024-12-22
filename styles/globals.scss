@@ -66,6 +66,16 @@ iframe {
     @apply text-main; /* For touch devices */
   }
 }
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
 
 //Swiper
 .swiper.swiper-initialized{
