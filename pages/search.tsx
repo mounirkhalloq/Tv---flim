@@ -42,11 +42,10 @@ const Search = () => {
         {mediaTypes.map((type) => (
           <button
             key={type.value}
-            // eslint-disable-next-line prettier/prettier
             className={cn(
               'px-4 py-2 rounded-full',
-              typeFilter === type.value 
-                ? 'bg-main text-white' 
+              typeFilter === type.value
+                ? 'bg-main text-white'
                 : 'hover:bg-gray-700'
             )}
             onClick={() => setTypeFilter(type.value)}
