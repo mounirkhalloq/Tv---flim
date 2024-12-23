@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Button, Rating } from '@/components';
+import { Rating } from '@/components';
 import { MovieItemProps } from '@/model/movie';
 import { w500Image } from '@/ultis/constants';
 
