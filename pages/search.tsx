@@ -37,13 +37,13 @@ const Search = () => {
   }, [type, q]);
 
   return (
-    <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-6 shadow-lg z-50 w-96">
-      <div className="flex items-center justify-center space-x-6">
+    <div className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-6 shadow-lg z-50 w-full max-w-lg">
+      <div className="flex items-center justify-center space-x-8">
         {mediaTypes.map((type) => (
           <button
             key={type.value}
             className={cn(
-              'px-6 py-2 rounded-full text-sm font-medium transition',
+              'px-8 py-2 rounded-full text-sm font-medium transition-all',
               typeFilter === type.value
                 ? 'bg-main text-white'
                 : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
