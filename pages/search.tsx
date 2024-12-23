@@ -44,7 +44,9 @@ const Search = () => {
             key={type.value}
             className={cn(
               'px-4 py-2 rounded-full',
-              typeFilter === type.value ? 'bg-main text-white' : 'hover:bg-gray-700'
+              typeFilter === type.value 
+                ? 'bg-main text-white' 
+                : 'hover:bg-gray-700'
             )}
             onClick={() => setTypeFilter(type.value)}
           >
