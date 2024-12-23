@@ -38,8 +38,8 @@ const Search = () => {
   return (
     <div
       style={{
-        position: 'absolute',
-        top: '5rem',
+        position: 'fixed',
+        top: '10%',
         left: '50%',
         transform: 'translateX(-50%)',
         backgroundColor: '#000',
@@ -48,7 +48,7 @@ const Search = () => {
         borderRadius: '1rem',
         width: '90%',
         maxWidth: '400px',
-        zIndex: 50,
+        zIndex: 1000,
         boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
       }}
     >
