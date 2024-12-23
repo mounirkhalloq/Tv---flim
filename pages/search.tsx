@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { AiOutlineSearch } from 'react-icons/ai';
-import cn from 'classnames';
 
 const mediaTypes = [
   { value: 'all', label: 'All' },
@@ -38,8 +37,8 @@ const Search = () => {
   return (
     <div
       style={{
-        position: 'fixed',
-        top: '10%',
+        position: 'absolute',
+        top: '5rem',
         left: '50%',
         transform: 'translateX(-50%)',
         backgroundColor: '#000',
@@ -48,7 +47,7 @@ const Search = () => {
         borderRadius: '1rem',
         width: '90%',
         maxWidth: '400px',
-        zIndex: 1000,
+        zIndex: 50,
         boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
       }}
     >
