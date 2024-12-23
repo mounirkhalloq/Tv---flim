@@ -3,14 +3,16 @@ import { useRouter } from 'next/router';
 import { AiOutlineSearch } from 'react-icons/ai';
 import cn from 'classnames';
 
-import { MediaType } from '@/model/movie';
-import { mediaTypes } from '@/ultis/constants';
-import { Input } from '@/components';
+const mediaTypes = [
+  { value: 'all', label: 'All' },
+  { value: 'movie', label: 'Movie' },
+  { value: 'tv', label: 'TV' },
+];
 
 const Search = () => {
   const router = useRouter();
   const [value, setValue] = useState('');
-  const [typeFilter, setTypeFilter] = useState<MediaType>('all');
+  const [typeFilter, setTypeFilter] = useState('all');
 
   const onChange = (e: any) => setValue(e.target.value);
 
@@ -24,7 +26,7 @@ const Search = () => {
     });
   };
 
-  const type = router.query.type as MediaType;
+  const type = router.query.type as string;
   const q = router.query.q as string;
 
   useEffect(() => {
@@ -51,12 +53,12 @@ const Search = () => {
         ))}
       </div>
       <div className="mt-4 relative">
-        <Input
+        <input
           type="text"
           placeholder="Search..."
           value={value}
           onChange={onChange}
-          className="w-full px-4 py-2 rounded-full"
+          className="w-full px-4 py-2 rounded-full bg-gray-800 text-white"
         />
         <button
           onClick={handleSearch}
