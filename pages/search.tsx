@@ -1,92 +1,72 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import ReactPaginate from 'react-paginate';
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import { AiOutlineSearch } from 'react-icons/ai';
+import cn from 'classnames';
 
 import { MediaType } from '@/model/movie';
-import { ItemGrid, PageHeader, Meta } from '@/components';
-import { searchAll, searchMovie, searchTV } from '@/ultis/tmdbApi';
 import { mediaTypes } from '@/ultis/constants';
+import { Input } from '@/components';
 
-interface Props {
-  type: MediaType;
-  keyword: string;
-  page: number;
-  data?: any;
-}
-
-const SearchPage: NextPage<Props> = ({ data, page, type, keyword }) => {
+const Search = () => {
   const router = useRouter();
-  const handlePageChange = ({ selected }: { selected: number }) => {
-    const currentPage = selected + 1;
+  const [value, setValue] = useState('');
+  const [typeFilter, setTypeFilter] = useState<MediaType>('all');
+
+  const onChange = (e: any) => setValue(e.target.value);
+
+  const handleSearch = () => {
     router.push({
+      pathname: '/search',
       query: {
-        ...router.query,
-        page: currentPage,
+        type: typeFilter,
+        q: value,
       },
     });
   };
+
+  const type = router.query.type as MediaType;
+  const q = router.query.q as string;
+
+  useEffect(() => {
+    if (type && q) {
+      setValue(q);
+      setTypeFilter(type);
+    }
+  }, [type, q]);
+
   return (
-    <>
-      <Meta
-        title={`TV Film - Search ${type}`}
-        description="Search Movies or TV show by keyword"
-        image="/preview.png"
-      />
-      <PageHeader media_type={type} isSearchPage keyword={keyword} />
-      <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-4 shadow-lg z-50">
-        <ItemGrid items={data.results} />
+    <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-4 shadow-lg z-50 w-80">
+      <div className="flex items-center space-x-4">
+        {mediaTypes.map((type) => (
+          <button
+            key={type.value}
+            className={cn(
+              'px-4 py-2 rounded-full',
+              typeFilter === type.value ? 'bg-main text-white' : 'hover:bg-gray-700'
+            )}
+            onClick={() => setTypeFilter(type.value)}
+          >
+            {type.label}
+          </button>
+        ))}
       </div>
-      <ReactPaginate
-        className="flex-center-center gap-4 text-white"
-        pageCount={50}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={1}
-        previousLabel={<AiOutlineLeft size={24} />}
-        nextLabel={<AiOutlineRight size={24} />}
-        forcePage={page - 1}
-        onPageChange={handlePageChange}
-        activeClassName="text-main"
-        pageClassName="bg-stone-700 min-w-[32px] text-center"
-      />
-    </>
+      <div className="mt-4 relative">
+        <Input
+          type="text"
+          placeholder="Search..."
+          value={value}
+          onChange={onChange}
+          className="w-full px-4 py-2 rounded-full"
+        />
+        <button
+          onClick={handleSearch}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-main text-white px-3 py-2 rounded-full"
+        >
+          <AiOutlineSearch />
+        </button>
+      </div>
+    </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  try {
-    const keyword = query.q as string;
-    const type = query.type as MediaType;
-    const page = Number(query.page) || 1;
-    if (!keyword || !mediaTypes.includes(type)) return { notFound: true };
-
-    let data;
-    switch (type) {
-      case 'all':
-        data = await searchAll(keyword, page);
-        break;
-      case 'movie':
-        data = await searchMovie(keyword, page);
-        break;
-      case 'tv':
-        data = await searchTV(keyword, page);
-        break;
-    }
-
-    return {
-      props: {
-        page,
-        keyword,
-        type,
-        data,
-      },
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      notFound: true,
-    };
-  }
-};
-
-export default SearchPage;
+export default Search;
