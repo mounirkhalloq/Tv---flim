@@ -42,6 +42,7 @@ const Search = () => {
         {mediaTypes.map((type) => (
           <button
             key={type.value}
+            // eslint-disable-next-line prettier/prettier
             className={cn(
               'px-4 py-2 rounded-full',
               typeFilter === type.value 
