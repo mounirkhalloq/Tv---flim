@@ -34,7 +34,7 @@ const SearchPage: NextPage<Props> = ({ data, page, type, keyword }) => {
         image="/preview.png"
       />
       <PageHeader media_type={type} isSearchPage keyword={keyword} />
-      <div className="container px-6">
+      <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-4 shadow-lg z-50">
         <ItemGrid items={data.results} />
       </div>
       <ReactPaginate
