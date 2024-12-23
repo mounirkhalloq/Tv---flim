@@ -14,22 +14,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
       </Head>
       <Navbar />
       <Component {...pageProps} />
       <Footer />
     </Provider>
-  );
-}
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-      <Component {...pageProps} />
-    </>
   );
 }
 
