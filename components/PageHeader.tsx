@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // État pour ouvrir/fermer le menu
+const PageHeader = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
 
@@ -26,10 +26,10 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Menu déroulant */}
+      {/* Menu déroulant pour mobile */}
       {isMenuOpen && (
         <div className="bg-gray-900 px-6 py-4 space-y-4 md:hidden">
-          {/* Search */}
+          {/* Barre de recherche */}
           <div className="flex items-center space-x-2 bg-gray-800 px-3 py-2 rounded-full">
             <input
               type="text"
@@ -46,7 +46,7 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Menu All, Movie, TV */}
+          {/* Liens de navigation */}
           <div className="flex flex-col space-y-4">
             <button
               onClick={() => setActiveFilter('all')}
@@ -82,9 +82,9 @@ const Header = () => {
         </div>
       )}
 
-      {/* Menu fixe pour desktop */}
+      {/* Menu pour desktop */}
       <div className="hidden md:flex items-center justify-between px-6 py-4">
-        {/* Search */}
+        {/* Barre de recherche */}
         <div className="flex items-center space-x-2 bg-gray-800 px-3 py-2 rounded-full w-96">
           <input
             type="text"
@@ -101,7 +101,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Menu All, Movie, TV */}
+        {/* Liens de navigation */}
         <div className="flex space-x-6">
           <button
             onClick={() => setActiveFilter('all')}
@@ -139,4 +139,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default PageHeader;
