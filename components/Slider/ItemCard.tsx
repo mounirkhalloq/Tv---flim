@@ -19,35 +19,24 @@ const ItemCard = ({ item }: Props) => {
             className="group relative rounded-3xl bg-center bg-cover bg-no-repeat pt-[160%] mb-2
             before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-0 before:rounded-3xl
             before:transition-[opacity] before:duration-300 before:ease-[ease]
-            hover-hover:hover:before:opacity-80
-            "
+            hover-hover:hover:before:opacity-80"
             style={{ backgroundImage: `url(${bg})` }}
           >
             <Rating
               rating={item.vote_average}
-              className="absolute top-1 left-2/4 translate-x-[-50%] group-hover:opacity-80
-              transition-[opacity] duration-300 ease-[ease]
-              "
+              className="absolute top-2 left-2 bg-black bg-opacity-60 rounded-full px-2 py-1 text-xs"
             />
-            <Button
-              className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%]
-                  group-hover:opacity-100 opacity-0
-                  group-hover:scale-100 scale-0
-                  transition-[transform,opacity] duration-[300ms,300ms] ease-[ease,ease]
-                  "
-            >
-              <FaPlayCircle size={40} />
-            </Button>
           </div>
-          <p className="flex-center-center font-bold text-[18px]">
+          <h3
+            className="text-sm sm:text-base font-semibold text-center text-white
+            line-clamp-2 leading-tight"
+          >
             {item.title || item.name}
-          </p>
+          </h3>
         </div>
       </a>
     </Link>
   );
 };
-
-export default ItemCard;
 
 export default ItemCard;
