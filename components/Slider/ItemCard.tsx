@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { FaPlayCircle } from 'react-icons/fa';
 
 import { Button, Rating } from '@/components';
