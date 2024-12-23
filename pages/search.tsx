@@ -37,16 +37,16 @@ const Search = () => {
   }, [type, q]);
 
   return (
-    <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-4 shadow-lg z-50 w-80">
-      <div className="flex items-center space-x-4">
+    <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-6 shadow-lg z-50 w-96">
+      <div className="flex items-center justify-center space-x-6">
         {mediaTypes.map((type) => (
           <button
             key={type.value}
             className={cn(
-              'px-4 py-2 rounded-full',
+              'px-6 py-2 rounded-full text-sm font-medium transition',
               typeFilter === type.value
                 ? 'bg-main text-white'
-                : 'hover:bg-gray-700'
+                : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
             )}
             onClick={() => setTypeFilter(type.value)}
           >
@@ -54,17 +54,17 @@ const Search = () => {
           </button>
         ))}
       </div>
-      <div className="mt-4 relative">
+      <div className="mt-6 relative">
         <input
           type="text"
           placeholder="Search..."
           value={value}
           onChange={onChange}
-          className="w-full px-4 py-2 rounded-full bg-gray-800 text-white"
+          className="w-full px-4 py-3 rounded-full bg-gray-800 text-white focus:ring focus:ring-main focus:outline-none"
         />
         <button
           onClick={handleSearch}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-main text-white px-3 py-2 rounded-full"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-main text-white px-4 py-2 rounded-full"
         >
           <AiOutlineSearch />
         </button>
