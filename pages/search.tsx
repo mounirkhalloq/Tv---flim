@@ -37,13 +37,13 @@ const Search = () => {
   }, [type, q]);
 
   return (
-    <div className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-4 shadow-lg z-50 w-11/12 max-w-md">
-      <div className="flex flex-wrap justify-center gap-4">
+    <div className="absolute top-20 left-1/2 transform -translate-x-1/2 bg-black text-white rounded-lg p-6 shadow-lg z-50 w-full max-w-md">
+      <div className="flex items-center justify-around gap-4">
         {mediaTypes.map((type) => (
           <button
             key={type.value}
             className={cn(
-              'px-6 py-2 rounded-full text-sm font-medium transition-all',
+              'flex-shrink-0 px-6 py-2 rounded-full text-sm font-medium transition-all',
               typeFilter === type.value
                 ? 'bg-main text-white'
                 : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
@@ -60,7 +60,7 @@ const Search = () => {
           placeholder="Search..."
           value={value}
           onChange={onChange}
-          className="w-full px-4 py-3 rounded-full bg-gray-800 text-white focus:ring focus:ring-main focus:outline-none"
+          className="w-full px-4 py-3 rounded-full bg-gray-800 text-white focus:ring-2 focus:ring-main focus:outline-none"
         />
         <button
           onClick={handleSearch}
