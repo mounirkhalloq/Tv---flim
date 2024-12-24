@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-
 import { Button } from '@/components';
 import ItemList from './ItemList';
 import { MovieItemProps } from '@/model/movie';
@@ -18,9 +17,12 @@ const ItemSlider = ({ title, items }: Props) => {
         <h2 className="flex-center-center text-lg sm:text-xl md:text-2xl font-bold">
           {title}
         </h2>
-        {/* Bouton avec les props small et outline */}
         {items.length > 0 && (
-          <Button small outline onClick={() => router.push(items[0].media_type)}>
+          <Button
+            small
+            outline
+            onClick={() => router.push(items[0].media_type)}
+          >
             View More
           </Button>
         )}
