@@ -59,11 +59,25 @@ const ItemDetailView: NextPage<Props> = ({ data, casts, videos, similar }) => {
               </a>
             </Link>
           </p>
-          <Button onClick={() => router.push(`${router.asPath}/watch`)}>
-            Watch Now
-          </Button>
+
+          {/* Section mise à jour avec Watch Now et Watch Trailer */}
+          <div className="flex gap-4">
+            <Button
+              onClick={() => router.push(`${router.asPath}/watch`)}
+              className="bg-main text-white px-6 py-2 rounded-md font-bold hover:bg-opacity-90 transition"
+            >
+              Watch Now
+            </Button>
+            <Button
+              onClick={() => router.push(`${router.asPath}/trailer`)}
+              className="border-2 border-main text-main px-6 py-2 rounded-md font-bold hover:bg-main hover:text-white transition"
+            >
+              Watch Trailer
+            </Button>
+          </div>
         </div>
       </div>
+
       <div className="container px-6 [&>*~*]:mt-12">
         <div className="">
           <p className="text-[1.5rem] font-semibold mb-2">CASTS</p>
