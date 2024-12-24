@@ -6,8 +6,7 @@
   "extends": [
     "next/core-web-vitals",
     "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "plugin:react/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -51,7 +50,6 @@
         "ignoreRestSiblings": false,
         "argsIgnorePattern": "^_"
       }
-    ],
-    "prettier/prettier": "off" // Désactivation de Prettier
+    ]
   }
 }
