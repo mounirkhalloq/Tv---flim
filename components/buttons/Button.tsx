@@ -1,32 +1,23 @@
 import { ReactNode } from 'react';
+import classNames from 'classnames';
 
-import Cn from 'classnames';
 interface Props {
   onClick?: () => void;
   children: ReactNode;
-  small?: boolean;
-  outline?: boolean;
+  variant?: 'watchNow' | 'watchTrailer';
   className?: string;
-  isWatchButton?: boolean; // Nouvelle prop pour les boutons spécifiques
 }
 
-const Button = ({
-  onClick,
-  children,
-  small = false,
-  outline = false,
-  className,
-  isWatchButton = false, // Par défaut désactivé
-}: Props) => {
+const Button = ({ onClick, children, variant, className }: Props) => {
+  const baseStyles = 'px-6 py-2 rounded-md font-bold transition';
+  const variantStyles = {
+    watchNow: 'bg-main text-white hover:bg-opacity-90',
+    watchTrailer: 'border-2 border-main text-main hover:bg-main hover:text-white',
+  };
+
   return (
     <button
-      className={Cn(
-        'btn',
-        { 'border-2 py-2 px-6 text-[1rem]': small },
-        { 'btn-outline': outline },
-        { 'watch-button': isWatchButton }, // Ajout pour alignement personnalisé
-        className
-      )}
+      className={classNames(baseStyles, variant && variantStyles[variant], className)}
       onClick={onClick}
     >
       {children}
