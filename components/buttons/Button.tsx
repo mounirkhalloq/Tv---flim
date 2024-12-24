@@ -1,34 +1,36 @@
-import { useRouter } from 'next/router';
-import Button from '@/components/buttons/Button';
-import ItemList from './ItemList';
-import { MovieItemProps } from '@/model/movie';
+import { ReactNode } from 'react';
+import classNames from 'classnames';
 
-// Interface des propriétés pour ItemSlider
-interface Props {
-  title: string;
-  items: MovieItemProps[];
+// Interface des propriétés pour Button
+interface ButtonProps {
+  onClick?: () => void;
+  children: ReactNode;
+  className?: string;
+  outline?: boolean;
+  small?: boolean;
 }
 
-const ItemSlider = ({ title, items }: Props) => {
-  const router = useRouter();
+const Button = ({
+  onClick,
+  children,
+  className,
+  outline = false,
+  small = false,
+}: ButtonProps) => {
+  const baseStyles = 'px-6 py-2 rounded-md font-bold transition';
+  const outlineStyles = outline
+    ? 'border-2 border-main text-main hover:bg-main hover:text-white'
+    : 'bg-main text-white hover:bg-opacity-90';
+  const sizeStyles = small ? 'px-4 py-1 text-sm' : 'px-6 py-2 text-base';
 
   return (
-    <div className="px-2 sm:px-4 md:px-6 mb-6">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg sm:text-xl md:text-2xl font-bold">{title}</h2>
-        {items.length > 0 && (
-          <Button
-            small
-            outline
-            onClick={() => router.push(items[0].media_type)}
-          >
-            View More
-          </Button>
-        )}
-      </div>
-      <ItemList items={items} />
-    </div>
+    <button
+      className={classNames(baseStyles, outlineStyles, sizeStyles, className)}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 };
 
-export default ItemSlider;
+export default Button;
