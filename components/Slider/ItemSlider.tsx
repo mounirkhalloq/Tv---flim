@@ -3,7 +3,6 @@ import { Button } from '@/components';
 import ItemList from './ItemList';
 import { MovieItemProps } from '@/model/movie';
 
-// Interface des propriétés pour le composant ItemSlider
 interface Props {
   title: string;
   items: MovieItemProps[];
@@ -15,10 +14,7 @@ const ItemSlider = ({ title, items }: Props) => {
   return (
     <div className="px-2 sm:px-4 md:px-6 mb-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
-          {title}
-        </h2>
-        {/* Ajout d'une condition pour éviter d'accéder à un tableau vide */}
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold">{title}</h2>
         {items.length > 0 && (
           <Button
             small
