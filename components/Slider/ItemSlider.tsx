@@ -17,7 +17,7 @@ const ItemSlider = ({ title, items }: Props) => {
         <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
           {title}
         </h2>
-        {/* Ajout d'une condition pour éviter les erreurs si items est vide */}
+        {/* Condition pour éviter d'accéder à un tableau vide */}
         {items.length > 0 && (
           <Button
             small
