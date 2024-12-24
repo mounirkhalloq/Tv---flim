@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 
+// Interface définissant les props du composant Button
 interface Props {
   onClick?: () => void;
   children: ReactNode;
   className?: string;
-  outline?: boolean; // Propriété pour les boutons avec bordure
-  small?: boolean; // Propriété pour gérer les petits boutons
+  outline?: boolean; // Pour les boutons avec bordure
+  small?: boolean; // Pour les boutons de petite taille
 }
 
 const Button = ({ onClick, children, className, outline = false, small = false }: Props) => {
