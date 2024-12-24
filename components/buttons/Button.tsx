@@ -5,8 +5,8 @@ interface Props {
   onClick?: () => void;
   children: ReactNode;
   className?: string;
-  outline?: boolean; // Propriété pour les boutons avec bordure
-  small?: boolean; // Propriété pour les petits boutons
+  outline?: boolean; // Propriété pour gérer les boutons avec bordure
+  small?: boolean; // Propriété pour gérer les petits boutons
 }
 
 const Button = ({ onClick, children, className, outline = false, small = false }: Props) => {
