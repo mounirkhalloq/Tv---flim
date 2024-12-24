@@ -7,6 +7,7 @@ interface Props {
   small?: boolean;
   outline?: boolean;
   className?: string;
+  isWatchButton?: boolean; // Nouvelle prop pour les boutons spécifiques
 }
 
 const Button = ({
@@ -15,6 +16,7 @@ const Button = ({
   small = false,
   outline = false,
   className,
+  isWatchButton = false, // Par défaut désactivé
 }: Props) => {
   return (
     <button
@@ -22,6 +24,7 @@ const Button = ({
         'btn',
         { 'border-2 py-2 px-6 text-[1rem]': small },
         { 'btn-outline': outline },
+        { 'watch-button': isWatchButton }, // Ajout pour alignement personnalisé
         className
       )}
       onClick={onClick}
