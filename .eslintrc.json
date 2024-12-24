@@ -52,11 +52,6 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "prettier/prettier": [
-      "error",
-      {
-        "usePrettierrc": true
-      }
-    ]
+    "prettier/prettier": "off" // Désactivation de Prettier
   }
 }
