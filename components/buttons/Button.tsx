@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 
+// Définition des props du bouton
 interface ButtonProps {
   onClick?: () => void;
   children: ReactNode;
   className?: string;
-  outline?: boolean;
-  small?: boolean;
+  outline?: boolean; // Gère les styles "outline"
+  small?: boolean; // Gère la taille compacte
 }
 
 const Button = ({
