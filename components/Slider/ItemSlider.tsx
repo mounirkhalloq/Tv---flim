@@ -13,10 +13,11 @@ const ItemSlider = ({ title, items }: Props) => {
 
   return (
     <div className="px-2 sm:px-4 md:px-6 mb-6">
-      <div className="flex align-center justify-between mb-6">
-        <h2 className="flex-center-center text-lg sm:text-xl md:text-2xl font-bold">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
           {title}
         </h2>
+        {/* Bouton avec la prop small */}
         {items.length > 0 && (
           <Button
             small
