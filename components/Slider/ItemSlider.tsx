@@ -3,6 +3,7 @@ import { Button } from '@/components';
 import ItemList from './ItemList';
 import { MovieItemProps } from '@/model/movie';
 
+// Interface des propriétés pour le composant ItemSlider
 interface Props {
   title: string;
   items: MovieItemProps[];
@@ -17,12 +18,12 @@ const ItemSlider = ({ title, items }: Props) => {
         <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
           {title}
         </h2>
-        {/* Condition pour éviter d'accéder à un tableau vide */}
+        {/* Ajout d'une condition pour éviter d'accéder à un tableau vide */}
         {items.length > 0 && (
           <Button
             small
             outline
-            onClick={async () => await router.push(items[0].media_type)}
+            onClick={() => router.push(items[0].media_type)}
           >
             View More
           </Button>
