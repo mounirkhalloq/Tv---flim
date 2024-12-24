@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
-import { Button } from '@/components';
+import Button from '@/components/buttons/Button';
 import ItemList from './ItemList';
 import { MovieItemProps } from '@/model/movie';
 
+// Définition des props pour ItemSlider
 interface Props {
   title: string;
   items: MovieItemProps[];
