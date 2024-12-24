@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 
-// Interface des propriétés pour Button
 interface ButtonProps {
   onClick?: () => void;
   children: ReactNode;
