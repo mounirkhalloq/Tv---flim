@@ -18,9 +18,12 @@ const ItemSlider = ({ title, items }: Props) => {
         <h2 className="flex-center-center text-lg sm:text-xl md:text-2xl font-bold">
           {title}
         </h2>
-        <Button small outline onClick={() => router.push(items[0].media_type)}>
-          View More
-        </Button>
+        {/* Bouton avec les props small et outline */}
+        {items.length > 0 && (
+          <Button small outline onClick={() => router.push(items[0].media_type)}>
+            View More
+          </Button>
+        )}
       </div>
       <ItemList items={items} />
     </div>
