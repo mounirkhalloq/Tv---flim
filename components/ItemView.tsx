@@ -29,12 +29,17 @@ const ItemView: NextPage<Props> = ({
           </div>
         ) : (
           <>
+            {/* Grid des éléments */}
             <div>
               <ItemGrid items={items} />
             </div>
+
+            {/* Loader pour le chargement supplémentaire */}
             <div className="text-center">
               <ClipLoader loading={loadingMore} color="#06b6d4" size={80} />
             </div>
+
+            {/* Bouton "Load More" */}
             {page < total_pages && (
               <div className="mt-4 text-center">
                 <Button outline onClick={loadMore}>
