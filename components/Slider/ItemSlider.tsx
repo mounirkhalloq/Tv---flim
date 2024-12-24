@@ -3,7 +3,7 @@ import Button from '@/components/buttons/Button';
 import ItemList from './ItemList';
 import { MovieItemProps } from '@/model/movie';
 
-// Définition des props pour ItemSlider
+// Interface des propriétés pour ItemSlider
 interface Props {
   title: string;
   items: MovieItemProps[];
