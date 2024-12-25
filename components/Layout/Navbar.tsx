@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import cn from 'classnames';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
