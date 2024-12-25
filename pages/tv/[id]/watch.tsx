@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
+import Image from 'next/image'; // Import Next.js Image component
 import { Fragment, useState } from 'react';
 import cn from 'classnames';
 
@@ -15,6 +16,7 @@ interface Props {
 
 const Watch: NextPage<Props> = ({ data, seasons }) => {
   const [openId, setOpenId] = useState<number | undefined>();
+
   return (
     <>
       <Meta
@@ -27,10 +29,13 @@ const Watch: NextPage<Props> = ({ data, seasons }) => {
           <div className="col-start-3 col-span-8">
             <div className="grid grid-cols-12 gap-4">
               <div className="col-span-3 h-full w-full">
-                <img
+                {/* Replaced <img> with <Image /> */}
+                <Image
                   className="rounded-xl"
-                  alt=""
+                  alt={`Poster of ${data.name}`}
                   src={w500Image(data.poster_path)}
+                  width={300}
+                  height={450}
                 />
               </div>
               <div className="col-span-9">
@@ -54,16 +59,17 @@ const Watch: NextPage<Props> = ({ data, seasons }) => {
                     'transition-[background-color] duration-300 ease-[ease]'
                   )}
                   onClick={() =>
-                    openId === item.id
-                      ? setOpenId(undefined)
-                      : setOpenId(item.id)
+                    openId === item.id ? setOpenId(undefined) : setOpenId(item.id)
                   }
                 >
                   <div className="col-span-3">
-                    <img
+                    {/* Replaced <img> with <Image /> */}
+                    <Image
                       className="w-full rounded-3xl"
-                      alt=""
+                      alt={`Poster of ${item.name}`}
                       src={w500Image(item.poster_path)}
+                      width={300}
+                      height={450}
                     />
                   </div>
                   <div className="col-span-9">
@@ -111,10 +117,13 @@ const Watch: NextPage<Props> = ({ data, seasons }) => {
                               {episode.episode_number}
                             </p>
                           </div>
-                          <img
+                          {/* Replaced <img> with <Image /> */}
+                          <Image
                             className="w-[30%] py-2 rounded-2xl"
-                            alt=""
+                            alt={`Still from ${episode.name}`}
                             src={w500Image(episode.still_path)}
+                            width={300}
+                            height={200}
                           />
                           <div className="ml-4">
                             <p
