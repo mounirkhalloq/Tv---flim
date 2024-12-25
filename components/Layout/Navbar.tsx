@@ -20,6 +20,7 @@ const Navbar = () => {
         setIsShrink(false);
       }
     };
+
     window.addEventListener('scroll', shrinkHeader);
     return () => {
       window.removeEventListener('scroll', shrinkHeader);
@@ -30,31 +31,50 @@ const Navbar = () => {
     <div
       ref={navbarRef}
       className={Cn(
-        'fixed top-0 left-0 z-10 w-full max-h-32 px-8',
-        'transition-[height,background-color] duration-[300ms,300ms] ease-[ease,ease]',
-        isShrink ? 'bg-body h-headerShrinkHeight' : 'h-headerHeight'
+        'fixed top-0 left-0 w-full z-50 transition-all duration-300',
+        isShrink ? 'bg-gray-900 shadow-lg py-2' : 'bg-transparent py-4'
       )}
     >
-      <div className="container h-full grid grid-cols-12 gap-12 grid-rows-1">
-        <div className="col-span-3">
-          <div className="flex h-full">
-            <Link href="/">
-              <a className="w-auto font-semibold text-4xl flex items-center">
-                <div className="flex mr-2.5">
-                  <Image src="/icon.png" alt="" width={50} height={50} />
-                </div>
-                <span>TV FILM</span>
-              </a>
-            </Link>
-          </div>
+      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Logo Section */}
+        <Link href="/">
+          <a className="text-2xl font-bold text-white">TV FILM</a>
+        </Link>
+
+        {/* Navigation Links */}
+        <nav className="hidden sm:flex space-x-4">
+          <NavbarLink href="/" label="All" />
+          <NavbarLink href="/movie" label="Movie" />
+          <NavbarLink href="/tv" label="TV" />
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="sm:hidden">
+          <button
+            type="button"
+            className="text-white focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            <svg
+              className="h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
         </div>
-        <div className="col-span-4">
-          <div className="flex h-full items-center">
-            <Search />
-          </div>
-        </div>
-        <div className="col-span-3 col-end-12">
-          <NavbarLink />
+
+        {/* Search Component */}
+        <div className="hidden sm:block">
+          <Search />
         </div>
       </div>
     </div>
