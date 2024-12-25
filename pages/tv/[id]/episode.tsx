@@ -24,9 +24,7 @@ const Watch: NextPage<Props> = ({
   episodeNumber,
   episode,
 }) => {
-  const [openSeason, setOpenSeason] = useState<number | undefined>(
-    seasonNumber
-  );
+  const [openSeason, setOpenSeason] = useState<number | undefined>(seasonNumber);
 
   return (
     <>
