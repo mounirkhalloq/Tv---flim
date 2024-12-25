@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
-import Image from 'next/image'; // Import Next.js Image component
+import Image from 'next/image'; // Importing the Next.js Image component
 import { Fragment, useState } from 'react';
 import cn from 'classnames';
 
@@ -29,7 +29,7 @@ const Watch: NextPage<Props> = ({ data, seasons }) => {
           <div className="col-start-3 col-span-8">
             <div className="grid grid-cols-12 gap-4">
               <div className="col-span-3 h-full w-full">
-                {/* Replaced <img> with <Image /> */}
+                {/* Correct usage of <Image /> */}
                 <Image
                   className="rounded-xl"
                   alt={`Poster of ${data.name}`}
@@ -63,7 +63,7 @@ const Watch: NextPage<Props> = ({ data, seasons }) => {
                   }
                 >
                   <div className="col-span-3">
-                    {/* Replaced <img> with <Image /> */}
+                    {/* Correct usage of <Image /> */}
                     <Image
                       className="w-full rounded-3xl"
                       alt={`Poster of ${item.name}`}
@@ -117,7 +117,7 @@ const Watch: NextPage<Props> = ({ data, seasons }) => {
                               {episode.episode_number}
                             </p>
                           </div>
-                          {/* Replaced <img> with <Image /> */}
+                          {/* Correct usage of <Image /> */}
                           <Image
                             className="w-[30%] py-2 rounded-2xl"
                             alt={`Still from ${episode.name}`}
