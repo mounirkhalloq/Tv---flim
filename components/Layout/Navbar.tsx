@@ -1,83 +1,80 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Cn from 'classnames';
-
-import { NavbarLink, Search } from '@/components';
+import cn from 'classnames';
 
 const Navbar = () => {
-  const navbarRef = useRef<HTMLDivElement>(null);
-  const [isShrink, setIsShrink] = useState(false);
-
-  useEffect(() => {
-    const shrinkHeader = () => {
-      if (
-        document.body.scrollTop > 100 ||
-        document.documentElement.scrollTop > 100
-      ) {
-        setIsShrink(true);
-      } else {
-        setIsShrink(false);
-      }
-    };
-
-    window.addEventListener('scroll', shrinkHeader);
-    return () => {
-      window.removeEventListener('scroll', shrinkHeader);
-    };
-  }, []);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div
-      ref={navbarRef}
-      className={Cn(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-300',
-        isShrink ? 'bg-gray-900 shadow-lg py-2' : 'bg-transparent py-4'
-      )}
-    >
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo Section */}
+    <header className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-md z-50">
+      <div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        {/* Logo */}
         <Link href="/">
-          <a className="text-2xl font-bold text-white">TV FILM</a>
+          <a className="flex items-center">
+            <Image src="/icon.png" alt="Logo" width={40} height={40} />
+            <span className="ml-2 text-xl font-bold">TV Film</span>
+          </a>
         </Link>
 
-        {/* Navigation Links */}
-        <nav className="hidden sm:flex space-x-4">
-          <NavbarLink href="/" label="All" />
-          <NavbarLink href="/movie" label="Movie" />
-          <NavbarLink href="/tv" label="TV" />
+        {/* Desktop Navigation */}
+        <nav className="hidden sm:flex space-x-6">
+          <Link href="/">
+            <a className="hover:text-main transition">Home</a>
+          </Link>
+          <Link href="/movies">
+            <a className="hover:text-main transition">Movies</a>
+          </Link>
+          <Link href="/tv">
+            <a className="hover:text-main transition">TV Shows</a>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="sm:hidden">
-          <button
-            type="button"
-            className="text-white focus:outline-none focus:ring-2 focus:ring-white"
+        <button
+          className="sm:hidden focus:outline-none"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <svg
+            className="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <svg
-              className="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
-        </div>
-
-        {/* Search Component */}
-        <div className="hidden sm:block">
-          <Search />
-        </div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
+            />
+          </svg>
+        </button>
       </div>
-    </div>
+
+      {/* Mobile Navigation */}
+      {isMobileMenuOpen && (
+        <nav className="sm:hidden bg-gray-800 text-white">
+          <ul className="space-y-4 px-4 py-6">
+            <li>
+              <Link href="/">
+                <a className="block hover:text-main transition">Home</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/movies">
+                <a className="block hover:text-main transition">Movies</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/tv">
+                <a className="block hover:text-main transition">TV Shows</a>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </header>
   );
 };
 
