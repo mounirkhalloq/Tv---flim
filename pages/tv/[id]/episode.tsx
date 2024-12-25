@@ -1,5 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
+import Image from 'next/image'; // Import Next.js Image component
 import { useState } from 'react';
 import cn from 'classnames';
 
@@ -26,6 +27,7 @@ const Watch: NextPage<Props> = ({
   const [openSeason, setOpenSeason] = useState<number | undefined>(
     seasonNumber
   );
+
   return (
     <>
       <Meta
@@ -40,7 +42,7 @@ const Watch: NextPage<Props> = ({
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
                 src={embedEpisode(data.id, seasonNumber, episodeNumber)}
-                title=""
+                title="Episode Video"
                 frameBorder="0"
                 allowFullScreen
               />
@@ -65,10 +67,12 @@ const Watch: NextPage<Props> = ({
                         : setOpenSeason(season.season_number)
                     }
                   >
-                    <img
+                    <Image
                       className="w-[20%] mr-4 rounded-lg"
                       src={w500Image(season.poster_path)}
-                      alt=""
+                      alt={`Poster of ${season.name}`}
+                      width={100}
+                      height={150}
                     />
                     <p
                       className={cn('text-xl transition', {
@@ -103,10 +107,12 @@ const Watch: NextPage<Props> = ({
                               }
                             )}
                           >
-                            <img
+                            <Image
                               className="w-2/5 mr-2 rounded-xl"
                               src={w500Image(episode.still_path)}
-                              alt=""
+                              alt={`Still from ${episode.name}`}
+                              width={150}
+                              height={100}
                             />
                             <p
                               className={cn('text-lg', {
