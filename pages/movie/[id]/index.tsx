@@ -14,19 +14,24 @@ interface Props {
 
 const Movie: NextPage<Props> = ({ data, casts, videos, similar }) => {
   return (
-    <>
+    <div className="min-h-screen bg-gray-100">
+      {/* Meta Information for SEO */}
       <Meta
         title={`${data.title} - Movie - TV Film`}
         description="Viewing Info"
         image={imageOriginal(data.backdrop_path)}
       />
-      <ItemDetailView
-        data={data}
-        casts={casts}
-        videos={videos}
-        similar={similar}
-      />
-    </>
+
+      {/* Item Detail View */}
+      <div className="container mx-auto px-4 py-6">
+        <ItemDetailView
+          data={data}
+          casts={casts}
+          videos={videos}
+          similar={similar}
+        />
+      </div>
+    </div>
   );
 };
 
