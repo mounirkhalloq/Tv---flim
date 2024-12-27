@@ -11,17 +11,25 @@ interface Props {
 const Home: NextPage<Props> = ({ data }) => {
   return (
     <>
+      {/* SEO Meta Tags */}
       <Meta
         title="TV Film"
-        description="Watch Movies and TV show"
+        description="Watch Movies and TV shows"
         image="/preview.png"
       />
 
-      <div style={{ minHeight: '1000px' }} className="">
+      {/* Main Container */}
+      <div className="min-h-screen bg-gray-100">
+        {/* Main Slider Section */}
         <MainSlider movieItems={data['Popular Movies']} />
-        <div className="container px-6">
+
+        {/* Movies Section */}
+        <div className="container mx-auto px-4 py-6">
           {Object.keys(data).map((key) => (
-            <ItemSlider title={key} key={key} items={data[key]} />
+            <div key={key} className="mb-8">
+              <h2 className="text-xl md:text-2xl font-bold mb-4">{key}</h2>
+              <ItemSlider title={key} items={data[key]} />
+            </div>
           ))}
         </div>
       </div>
@@ -39,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
       revalidate: 3600,
     };
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return {
       notFound: true,
       revalidate: true,
