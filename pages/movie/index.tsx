@@ -20,20 +20,28 @@ const Movie = () => {
 
   return (
     <>
+      {/* SEO Meta Tags */}
       <Meta
         title="TV Film - All Movies"
-        description="List of all movies of the website"
+        description="List of all movies on the website"
         image="/preview.png"
       />
-      <ItemView
-        loading={loading}
-        loadingMore={loadingMore}
-        items={items}
-        page={page}
-        total_pages={total_pages}
-        loadMore={loadMore}
-        media_type="movie"
-      />
+
+      {/* Movie List */}
+      <div className="container mx-auto px-4 py-6">
+        <h1 className="text-2xl md:text-4xl font-bold text-center mb-6">
+          All Movies
+        </h1>
+        <ItemView
+          loading={loading}
+          loadingMore={loadingMore}
+          items={items}
+          page={page}
+          total_pages={total_pages}
+          loadMore={loadMore}
+          media_type="movie"
+        />
+      </div>
     </>
   );
 };
