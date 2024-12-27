@@ -20,29 +20,38 @@ const ItemView: NextPage<Props> = ({
 }) => {
   return (
     <>
+      {/* Page Header */}
       <PageHeader media_type={media_type} />
 
-      <div className="container px-6">
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-6">
+        {/* Loading Spinner */}
         {loading ? (
           <div className="text-center">
             <ClipLoader color="#06b6d4" size={80} />
           </div>
         ) : (
           <>
-            {/* Grid des éléments */}
-            <div>
+            {/* Grid of Items */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               <ItemGrid items={items} />
             </div>
 
-            {/* Loader pour le chargement supplémentaire */}
-            <div className="text-center">
-              <ClipLoader loading={loadingMore} color="#06b6d4" size={80} />
-            </div>
+            {/* Additional Loading Spinner */}
+            {loadingMore && (
+              <div className="text-center mt-6">
+                <ClipLoader color="#06b6d4" size={80} />
+              </div>
+            )}
 
-            {/* Bouton "Load More" */}
+            {/* "Load More" Button */}
             {page < total_pages && (
-              <div className="mt-4 text-center">
-                <Button outline onClick={loadMore}>
+              <div className="mt-8 text-center">
+                <Button
+                  outline
+                  onClick={loadMore}
+                  className="px-6 py-2 border-main text-main font-semibold hover:bg-main hover:text-white transition"
+                >
                   Load More
                 </Button>
               </div>
