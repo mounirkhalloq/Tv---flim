@@ -19,13 +19,13 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden sm:flex space-x-6">
           <Link href="/">
-            <a className="hover:text-main transition">Home</a>
+            <a className="hover:text-main transition duration-300">Home</a>
           </Link>
           <Link href="/movies">
-            <a className="hover:text-main transition">Movies</a>
+            <a className="hover:text-main transition duration-300">Movies</a>
           </Link>
           <Link href="/tv">
-            <a className="hover:text-main transition">TV Shows</a>
+            <a className="hover:text-main transition duration-300">TV Shows</a>
           </Link>
         </nav>
 
@@ -33,6 +33,7 @@ const Navbar = () => {
         <button
           className="sm:hidden focus:outline-none"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Mobile Menu"
         >
           <svg
             className="h-6 w-6"
@@ -47,8 +48,8 @@ const Navbar = () => {
               strokeWidth={2}
               d={
                 isMobileMenuOpen
-                  ? 'M6 18L18 6M6 6l12 12'
-                  : 'M4 6h16M4 12h16m-7 6h7'
+                  ? 'M6 18L18 6M6 6l12 12' // Close icon
+                  : 'M4 6h16M4 12h16m-7 6h7' // Hamburger icon
               }
             />
           </svg>
@@ -61,17 +62,32 @@ const Navbar = () => {
           <ul className="space-y-4 px-4 py-6">
             <li>
               <Link href="/">
-                <a className="block hover:text-main transition">Home</a>
+                <a
+                  className="block hover:text-main transition duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/movies">
-                <a className="block hover:text-main transition">Movies</a>
+                <a
+                  className="block hover:text-main transition duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Movies
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/tv">
-                <a className="block hover:text-main transition">TV Shows</a>
+                <a
+                  className="block hover:text-main transition duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  TV Shows
+                </a>
               </Link>
             </li>
           </ul>
