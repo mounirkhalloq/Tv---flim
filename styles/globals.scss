@@ -13,7 +13,7 @@ body {
   line-height: 1.5;
   font-family: 'Montserrat', sans-serif;
 
-  /* Force the background color to black with !important */
+  /* Force the background color to black */
   background-color: #000 !important; /* Black background */
   color: #fff !important; /* White text */
 }
@@ -50,7 +50,7 @@ iframe {
   }
   body {
     color: white;
-    background: black !important; /* Force background on dark mode */
+    background: #000 !important; /* Force background on dark mode */
   }
 }
 
@@ -59,11 +59,13 @@ iframe {
     @apply text-main;
   }
 }
+
 @media (hover: none) {
   a {
     @apply text-main; /* For touch devices */
   }
 }
+
 @media (max-width: 768px) {
   body {
     font-size: 14px;
