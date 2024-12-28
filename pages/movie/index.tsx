@@ -27,23 +27,20 @@ const Movie = () => {
         image="/preview.png"
       />
 
-      {/* Main Wrapper with Black Background */}
-      <div className="min-h-screen bg-black">
-        {/* Movie List */}
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="text-2xl md:text-4xl font-bold text-center mb-6 text-white">
-            All Movies
-          </h1>
-          <ItemView
-            loading={loading}
-            loadingMore={loadingMore}
-            items={items}
-            page={page}
-            total_pages={total_pages}
-            loadMore={loadMore}
-            media_type="movie"
-          />
-        </div>
+      {/* Movie List */}
+      <div className="container mx-auto px-4 py-6">
+        <h1 className="text-2xl md:text-4xl font-bold text-center mb-6">
+          All Movies
+        </h1>
+        <ItemView
+          loading={loading}
+          loadingMore={loadingMore}
+          items={items}
+          page={page}
+          total_pages={total_pages}
+          loadMore={loadMore}
+          media_type="movie"
+        />
       </div>
     </>
   );
