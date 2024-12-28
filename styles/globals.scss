@@ -13,8 +13,9 @@ body {
   line-height: 1.5;
   font-family: 'Montserrat', sans-serif;
 
-  /* Force the background color to black */
-  @apply bg-black text-white; /* Directly apply bg-black instead of bg-body */
+  /* Force the background color to black with !important */
+  background-color: #000 !important; /* Black background */
+  color: #fff !important; /* White text */
 }
 
 a {
@@ -49,7 +50,7 @@ iframe {
   }
   body {
     color: white;
-    background: black;
+    background: black !important; /* Force background on dark mode */
   }
 }
 
@@ -74,12 +75,12 @@ iframe {
   }
 }
 
-// Swiper
-.swiper.swiper-initialized{
-  .swiper-wrapper{
+// Swiper styles
+.swiper.swiper-initialized {
+  .swiper-wrapper {
     @apply mb-0; /* Adjust the margin if necessary */
   }
-  .swiper-scrollbar-drag{
+  .swiper-scrollbar-drag {
     @apply bg-white; /* Ensure the scrollbar color doesn't interfere */
   }
 }
@@ -93,11 +94,11 @@ iframe {
     @apply flex items-center justify-center;
   }
 
-  .hidden{
-    @apply opacity-0 invisible; 
+  .hidden {
+    @apply opacity-0 invisible;
   }
 
-  .not-hidden{
+  .not-hidden {
     @apply opacity-100 visible;
   }
 
@@ -106,13 +107,13 @@ iframe {
     box-shadow: 0px 0px 5px 6px rgba(255, 0, 0, 0.3);
     transition: box-shadow 0.2s ease;
   }
-  
+
   .btn-outline {
     @apply border-[3px] border-white bg-transparent;
     box-shadow: unset;
     transition: color 0.3s ease, background-color 0.3s ease;
-    
-    &:hover{
+
+    &:hover {
       @apply bg-white text-main;
       box-shadow: unset;
     }
