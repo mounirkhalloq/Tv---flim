@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full bg-black text-white shadow-md z-50">
       <div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/">
@@ -58,7 +58,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <nav className="sm:hidden bg-gray-800 text-white">
+        <nav className="sm:hidden bg-black text-white">
           <ul className="space-y-4 px-4 py-6">
             <li>
               <Link href="/">
