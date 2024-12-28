@@ -1,7 +1,7 @@
 import '@/styles/globals.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/bundle';
+import 'swiper/swiper-bundle.min.css';  // This includes all necessary styles
 
 import { Provider } from 'react-redux';
 import store from '@/redux/store';
