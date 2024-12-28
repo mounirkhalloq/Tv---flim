@@ -1,34 +1,20 @@
-import '@/styles/globals.scss';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/bundle';
-
-import { Provider } from 'react-redux';
-import store from '@/redux/store';
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-
-import { Navbar, Footer } from '@/components';
-
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <Provider store={store}>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
-        <title>TV Film</title>
-      </Head>
-
-      {/* Force background black and text white */}
-      <div style={{ backgroundColor: '#000', color: '#fff' }} className="min-h-screen">
-        <Navbar />
-        <main className="flex-grow">
-          <Component {...pageProps} />
-        </main>
-        <Footer />
-      </div>
-    </Provider>
-  );
-}
-
-export default MyApp;
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}', // Ensures Tailwind looks for classes in pages
+    './components/**/*.{js,ts,jsx,tsx}', // Ensures Tailwind looks for classes in components
+    './layouts/**/*.{js,ts,jsx,tsx}', // Ensures Tailwind looks for classes in layouts
+  ],
+  theme: {
+    extend: {
+      colors: {
+        body: '#000000', // Custom black background color
+        main: '#ff0000',  // Example primary color (red)
+        white: '#ffffff', // White color for text and background
+        gray: {
+          700: '#4a4a4a', // Dark gray for accents or scrollbars
+        },
+      },
+    },
+  },
+  plugins: [],
+};
