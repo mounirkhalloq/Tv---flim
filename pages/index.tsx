@@ -19,7 +19,7 @@ const Home: NextPage<Props> = ({ data }) => {
       />
 
       {/* Main Container */}
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-black">
         {/* Main Slider Section */}
         <MainSlider movieItems={data['Popular Movies']} />
 
