@@ -14,21 +14,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <Head>
-        {/* Mobile-Responsive Meta Tag */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
         <title>Your Website</title>
       </Head>
 
-      {/* Wrap Content in a Responsive Container */}
-      <div className="min-h-screen flex flex-col bg-gray-100">
+      {/* Force background black and text white */}
+      <div className="min-h-screen" style={{ backgroundColor: '#000', color: '#fff' }}>
         <Navbar />
-        
-        {/* Main Content */}
         <main className="flex-grow">
           <Component {...pageProps} />
         </main>
-        
         <Footer />
       </div>
     </Provider>
