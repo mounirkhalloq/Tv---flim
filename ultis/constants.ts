@@ -11,11 +11,16 @@ export const imageOriginal = (imgPath: string) =>
 export const w500Image = (imgPath: string) =>
   `${TMDB_IMAGE}w500${imgPath}`;
 
-export const embedMovie = (id: number) =>
-  `https://2embed.org/embed/movie?tmdb=${id}`;
+// Movie Embed using TMDB ID
+export const embedMovie = (tmdbId: number) =>
+  `https://2embed.org/embed/movie/${tmdbId}`;
 
-export const embedEpisode = (id: number, season: number, episode: number) =>
-  `https://2embed.org/embed/series?tmdb=${id}&sea=${season}&epi=${episode}`;
+// TV Show Embed using TMDB ID
+export const embedEpisode = (
+  tmdbId: number,
+  season: number,
+  episode: number
+) => `https://2embed.org/embed/tv/${tmdbId}/${season}/${episode}`;
 
 export const imageResize = (src: string, dimension: string = 'w200') =>
   `${TMDB_IMAGE}${dimension}${src}`;
