@@ -1,23 +1,13 @@
-import { useEffect } from 'react';
-
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { fetchMovies, fetchLoadMoreMovies } from '@/redux/movieSlice';
+import { GetStaticProps, NextPage } from 'next';
 import { ItemView, Meta } from '@/components';
+import { fetchMovies } from '@/ultis/tmdbApi';
 
-const Movie = () => {
-  const dispatch = useAppDispatch();
-  const { loading, loadingMore, items, page, total_pages } = useAppSelector(
-    (state) => state.movie
-  );
+interface MoviePageProps {
+  movies: any[]; // Replace with your movie type
+  total_pages: number;
+}
 
-  useEffect(() => {
-    dispatch(fetchMovies());
-  }, [dispatch]);
-
-  const loadMore = () => {
-    dispatch(fetchLoadMoreMovies(page + 1));
-  };
-
+const MoviePage: NextPage<MoviePageProps> = ({ movies, total_pages }) => {
   return (
     <>
       {/* SEO Meta Tags */}
@@ -33,12 +23,12 @@ const Movie = () => {
           All Movies
         </h1>
         <ItemView
-          loading={loading}
-          loadingMore={loadingMore}
-          items={items}
-          page={page}
+          loading={false}
+          loadingMore={false}
+          items={movies}
+          page={1}
           total_pages={total_pages}
-          loadMore={loadMore}
+          loadMore={() => {}}
           media_type="movie"
         />
       </div>
@@ -46,4 +36,20 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const response = await fetchMovies(); // Replace with your actual API call
+    return {
+      props: {
+        movies: response.results,
+        total_pages: response.total_pages,
+      },
+      revalidate: 3600, // Revalidate every hour
+    };
+  } catch (error) {
+    console.error('Failed to fetch movies:', error);
+    return { notFound: true };
+  }
+};
+
+export default MoviePage;
