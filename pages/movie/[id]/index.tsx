@@ -14,7 +14,7 @@ interface Props {
 
 const Movie: NextPage<Props> = ({ data, casts, videos, similar }) => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-black">
       {/* Meta Information for SEO */}
       <Meta
         title={`${data.title} - Movie - TV Film`}
