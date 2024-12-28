@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-
 import { ItemDetailView, Meta } from '@/components';
 import { MovieItemProps, Cast, VideoTrailer } from '@/model/movie';
 import { imageOriginal } from '@/ultis/constants';
@@ -36,28 +35,43 @@ const Movie: NextPage<Props> = ({ data, casts, videos, similar }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const movieId = Number(params!.id);
+  if (!params?.id) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const movieId = Number(params.id);
 
   try {
     const response = await getMovieDetails(movieId);
     return {
       props: {
-        ...response,
+        data: response.data,
+        casts: response.casts,
+        videos: response.videos,
+        similar: response.similar,
       },
-      revalidate: 3600,
+      revalidate: 3600, // Revalidate every hour
     };
   } catch (error) {
+    console.error('Error fetching movie details:', error);
     return {
       notFound: true,
-      revalidate: true,
     };
   }
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // Optional: Fetch popular movie IDs to pre-generate some pages
+  const popularMovies = []; // Replace with an API call if needed
+  const paths = popularMovies.map((movie) => ({
+    params: { id: movie.id.toString() },
+  }));
+
   return {
-    paths: [],
-    fallback: 'blocking',
+    paths, // Pre-render these paths at build time
+    fallback: 'blocking', // Generate other pages on demand
   };
 };
 
