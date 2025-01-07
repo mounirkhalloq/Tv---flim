@@ -1,9 +1,11 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { useState } from 'react';
 
 import { AboutDetail, ItemList, Meta } from '@/components';
 import { MovieItemProps } from '@/model/movie';
 import { getWatchMovieDetail } from '@/ultis/tmdbApi';
 import { embedMovie, imageOriginal } from '@/ultis/constants';
+import EmailModal from '@/components/EmailModal'; // Import the modal component
 
 interface Props {
   data: MovieItemProps;
@@ -11,6 +13,9 @@ interface Props {
 }
 
 const Watch: NextPage<Props> = ({ data, similar }) => {
+  const [hasAccess, setHasAccess] = useState(false); // Track whether the user has subscribed
+  const [showModal, setShowModal] = useState(true); // Show the subscription modal initially
+
   return (
     <>
       <Meta
@@ -21,15 +26,30 @@ const Watch: NextPage<Props> = ({ data, similar }) => {
       <div className="container mt-28 px-6">
         <div className="grid grid-cols-12">
           <div className="col-span-8">
-            <div className="relative mb-3" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src={embedMovie(data.id)}
-                title=""
-                frameBorder="0"
-                allowFullScreen
+            {/* Subscription Modal */}
+            {showModal && (
+              <EmailModal
+                onEmailSubmit={() => {
+                  setShowModal(false); // Close the modal
+                  setHasAccess(true); // Grant access to the movie player
+                }}
               />
-            </div>
+            )}
+
+            {/* Video Player - Only show after subscription */}
+            {hasAccess && (
+              <div className="relative mb-3" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src={embedMovie(data.id)}
+                  title={data.title}
+                  frameBorder="0"
+                  allowFullScreen
+                />
+              </div>
+            )}
+
+            {/* About Details */}
             <AboutDetail
               title={data.title}
               name={data.name}
